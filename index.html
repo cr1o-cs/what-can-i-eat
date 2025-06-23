@@ -78,7 +78,7 @@
 
   <script>
     document.getElementById('getRandomDishBtn').addEventListener('click', () => {
-      const url = 'http://0.tcp.sa.ngrok.io:11691/api/v1/platos';
+      const url = 'https://c726-2800-40-80-67c1-2ad2-44ff-fec5-d809.ngrok-free.app/api/v1/platos';
 
       const modalDishContent = document.getElementById('modalDishContent');
       const dishModalLabel = document.getElementById('dishModalLabel');
@@ -88,7 +88,12 @@
       modalDishContent.innerHTML = '<p class="text-center text-info">Cargando detalles del plato...</p>';
       dishModal.show();
 
-      fetch(url)
+      fetch(url, {
+        method: "GET",
+        headers: {
+          "ngrok-skip-browser-warning": "yea pls"
+        }
+      })
         .then(response => {
           if (!response.ok) {
             throw new Error(`Error HTTP! Estado: ${response.status}`);
