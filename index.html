@@ -104,7 +104,10 @@
           const dish = data;
 
           if (dish) {
-            dishModalLabel.innerText = dish.nombreAutoctono || 'Detalles del Plato Aleatorio';
+            const nombreAutoctono = dish.nombreAutoctono || 'Nombre autoctono no disponible';
+            const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(nombreAutoctono)}`;
+
+            dishModalLabel.innerHTML = `<a href="${googleSearchUrl}" target="_blank" class="text-white">${nombreAutoctono}</a>`;
 
             const dishName = dish.nombre || 'Nombre no disponible';
             const dishEngName = dish.engName || 'English Name not available';
